@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
+        <meta charset="utf-8">
+        <title>My Rock Collection</title>
+    </head>
+    <body>
+        <h1> Rocks Rock</h1>
+
+        <div class="container">
+            <form  action="/add_item" method="post">
+                <label for="item_input">Add an Item to your collection</label>
+                <input type="text" name="item_input">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+        </div>
+        <div class="container">
+            {% if items is not empty %}
+                <h3> Your collection</h3>
+                <ul>
+                {% for item in items %}
+                    <li> {{item.getObject}}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <form action="/delete_all" method="post">
+                <button type="submit" name="button">Delete Inventory</button>
+            </form>
+        </div>
+
+    </body>
+</html>
