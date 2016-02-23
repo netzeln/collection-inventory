@@ -27,6 +27,11 @@
         return $app['twig']->render('index.html.twig');
     });
 
+    $app->get("/search", function() use ($app){
+        $search_results = Item::findObject($_GET['search']);
+        return $app['twig']->render('index.html.twig', array('objects'=> $search_results));
+    });
+
 
 
     return $app;
